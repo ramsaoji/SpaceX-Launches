@@ -49,11 +49,7 @@ export default function CustomModal({ open, items }) {
             fontSize="22px"
             marginTop="1rem"
           >
-            {items.mission_name && items.mission_name.length >= 75
-              ? `${items.mission_name.slice(0, 75)}...`
-              : items.mission_name === null
-              ? "No Title Available"
-              : items.mission_name}
+            {items.mission_name ? items.mission_name : "No Title Available"}
           </Typography>
 
           {/* Flight Number */}
@@ -86,12 +82,11 @@ export default function CustomModal({ open, items }) {
           </Typography>
 
           {/* Details */}
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            {items.details && items.details.length >= 215
-              ? `${items.details.slice(0, 212)}...`
-              : items.details === null
-              ? "No details Available"
-              : items.details}
+          <Typography
+            id="modal-modal-description"
+            sx={{ mt: 2, fontSize: ".8rem" }}
+          >
+            {items.details ? items.details : "No details Available"}
           </Typography>
         </Box>
       </Modal>
