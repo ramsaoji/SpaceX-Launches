@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState } from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
@@ -10,26 +10,15 @@ import CustomModal from "./CustomModal";
 
 export default function Item(props) {
   const { items, index } = props;
-
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(!open);
-  // const handleClose = () => setOpen(false);
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   return (
     // Grids
     <Grid xs={12} sm={6} md={4} key={index}>
-      <Card sx={{ height: 420 }}>
-        {/* <Link
-          target="_blank"
-          underline="none"
-          href={items.links.article_link}
-          onClick={() => {}}
-          color="inherit"
-        > */}
-
-        <CardActionArea onClick={handleOpen}>
-          {open && <CustomModal open={open} items={items} />}
-
+      <Card sx={{ height: 420 }} onClick={handleOpen}>
+        <CardActionArea>
           {/* Image */}
           <CardMedia
             component="img"
@@ -112,6 +101,7 @@ export default function Item(props) {
             </Typography>
           </CardContent>
         </CardActionArea>
+
         <CardActions
           sx={{
             px: 2,
@@ -136,8 +126,9 @@ export default function Item(props) {
             </Button>
           </Link>
         </CardActions>
-        {/* </Link> */}
       </Card>
+      {/* Modal */}
+      <CustomModal open={open} handleClose={handleClose} items={items} />
     </Grid>
   );
 }

@@ -24,7 +24,6 @@ function App() {
       const spacexApiData = await axios.get(
         `https://api.spacexdata.com/v3/launches`
       );
-
       setTotalResults(spacexApiData.data.length);
       setApiData(apiData.concat(spacexApiData.data.slice(limit, newLimit)));
     } catch (error) {
@@ -34,8 +33,12 @@ function App() {
 
   const fetchMoreData = () => {
     setLimit(newLimit);
-    setNewLimit(newLimit + pageSize);
-    console.log("newlimit - ", newLimit);
+    if (newLimit <= totalResults) {
+      //to stop spinner
+      setNewLimit(totalResults);
+    } else {
+      setNewLimit(newLimit + pageSize);
+    }
   };
 
   useEffect(() => {

@@ -16,7 +16,7 @@ const Cards = (props) => {
           style={{ overflow: "hidden" }}
           dataLength={newLimit}
           next={fetchMoreData}
-          hasMore={newLimit <= totalResults}
+          hasMore={newLimit !== totalResults}
           //Spinner
           loader={<Spinner />}
         >
