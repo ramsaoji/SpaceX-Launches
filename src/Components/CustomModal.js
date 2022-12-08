@@ -66,6 +66,7 @@ export default function CustomModal({ open, handleClose, items }) {
           variant="h6"
           component="h6"
           fontSize="16px"
+          marginTop="1rem"
         >
           {`Flight No - ${
             items.flight_number ? items.flight_number : "Unknown"
@@ -92,7 +93,7 @@ export default function CustomModal({ open, handleClose, items }) {
         {/* Details */}
         <Typography
           id="modal-modal-description"
-          sx={{ mt: 2, fontSize: ".8rem" }}
+          sx={{ mt: 2, textAlign: "justify" }}
         >
           {items.details ? items.details : "No details Available"}
         </Typography>
